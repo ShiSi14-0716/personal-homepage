@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>施思のホーム ｜ 日日是好日</title>
+<meta name="description" content="施思的个人主页：今日学习任务、财务控制台、日语课程、单词画廊、每日一言与打卡。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%233370FF'/%3E%3Ctext x='32' y='45' font-size='36' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700'%3E施%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap">
+<style>
+/* ============ 基础（飞书多维表格风） ============ */
+:root{
+  --bg:#16191D;
+  --card:#1E2228;
+  --line:#2C313A;
+  --line-strong:#3A4150;
+  --ink:#E8EAED;
+  --ink-2:#B4BCC7;
+  --ink-3:#7D8590;
+  --blue:#4C7BFF;
+  --blue-deep:#6B93FF;
+  --blue-bg:rgba(76,123,255,.16);
+  --green:#35C724;
+  --green-bg:rgba(53,199,36,.14);
+  --orange:#FF8B2B;
+  --orange-bg:rgba(255,139,43,.14);
+  --red:#F55A5A;
+  --purple:#8A63D2;
+  --cyan:#17CDCD;
+  --sans:"Noto Sans SC","Microsoft YaHei",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);color:var(--ink);line-height:1.7;min-height:100vh;
+  background:var(--bg);
+}
+a{color:inherit}
+button{font-family:var(--sans)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 26px;position:relative;z-index:1}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+
+/* ============ 顶栏 ============ */
+.topbar{display:flex;align-items:center;gap:14px;padding:20px 0 6px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;font-size:1.15rem;font-weight:700;color:var(--ink)}
+.logo-mark{
+  width:32px;height:32px;border-radius:8px;display:grid;place-items:center;color:#fff;font-size:.95rem;font-weight:700;
+  background:var(--blue);box-shadow:0 2px 8px rgba(51,112,255,.3);
+}
+.logo span:last-child{color:var(--ink-2);font-weight:500}
+.top-meta{margin-left:auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.chip{
+  display:inline-flex;align-items:center;gap:7px;padding:6px 13px;border-radius:8px;
+  background:var(--card);border:1px solid var(--line);font-size:.84rem;color:var(--ink-2);white-space:nowrap;
+}
+.chip .num{font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.chip svg{width:14px;height:14px;color:var(--orange);flex:none}
+
+/* ============ 主功能区 ============ */
+.hero{
+  position:relative;margin-top:20px;background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:clamp(26px,4.5vw,44px) clamp(24px,4.5vw,44px);overflow:hidden;
+}
+.hero::before{
+  content:"";position:absolute;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,var(--blue),#6FA3FF);
+}
+.hero-kicker{font-size:.78rem;letter-spacing:.32em;color:var(--blue);font-weight:700}
+.hero-title{
+  font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;margin-top:10px;line-height:1.35;color:var(--ink);
+  letter-spacing:.01em;
+}
+.hero-sub{color:var(--ink-2);font-size:.98rem;margin-top:6px}
+.mission{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+.m-btn{
+  display:flex;align-items:center;gap:12px;padding:13px 16px;border-radius:10px;text-decoration:none;
+  font-weight:600;font-size:.94rem;border:1px solid var(--line);background:var(--card);color:var(--ink);
+  transition:border-color .2s,box-shadow .2s,transform .15s;
+}
+.m-btn:hover{border-color:var(--blue);box-shadow:0 4px 14px rgba(51,112,255,.12);transform:translateY(-1px)}
+.m-btn:active{transform:translateY(1px)}
+.m-btn .mi{width:36px;height:36px;border-radius:8px;display:grid;place-items:center;color:#fff;flex:none}
+.m-btn .mi svg{width:19px;height:19px}
+.m-btn small{display:block;font-weight:400;color:var(--ink-3);font-size:.76rem;margin-top:1px}
+.mi.blue{background:var(--blue)}
+.mi.orange{background:var(--orange)}
+.mi.green{background:var(--green)}
+.stat-row{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}
+.stat-chip{
+  display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:8px;text-decoration:none;
+  background:var(--bg);border:1px solid var(--line);color:var(--ink-2);font-size:.85rem;font-weight:500;
+  transition:border-color .2s,background .2s;
+}
+.stat-chip:hover{border-color:var(--blue);background:var(--blue-bg)}
+.stat-chip .s-ic{width:15px;height:15px;color:var(--blue)}
+.stat-chip b{font-size:1.05rem;color:var(--ink);font-weight:700;font-variant-numeric:tabular-nums}
+.stat-chip .u{color:var(--ink-3)}
+
+/* ============ 区块标题 ============ */
+.sec-head{display:flex;align-items:center;gap:10px;margin:36px 0 14px}
+.sec-title{font-size:1.1rem;font-weight:700;color:var(--ink)}
+.sec-count{margin-left:auto;font-size:.8rem;color:var(--ink-3)}
+
+/* ============ 快捷入口 ============ */
+.speed{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.link-card{
+  display:flex;flex-direction:column;gap:8px;padding:20px 20px 16px;background:var(--card);
+  border:1px solid var(--line);border-radius:10px;text-decoration:none;color:inherit;
+  transition:border-color .2s,box-shadow .2s,transform .15s;position:relative;
+}
+.link-card:hover{border-color:var(--line-strong);box-shadow:0 8px 22px rgba(0,0,0,.45);transform:translateY(-2px)}
+.icon-tile{width:38px;height:38px;border-radius:8px;display:grid;place-items:center;color:#fff;margin-bottom:6px}
+.icon-tile svg{width:20px;height:20px}
+.tile-blue{background:var(--blue)}
+.tile-orange{background:var(--orange)}
+.tile-green{background:var(--green)}
+.tile-purple{background:var(--purple)}
+.link-card h3{font-size:1rem;font-weight:700;color:var(--ink)}
+.link-card p{color:var(--ink-3);font-size:.84rem;line-height:1.6;flex:1}
+.link-go{margin-top:8px;font-size:.84rem;font-weight:600;color:var(--blue);display:inline-flex;align-items:center;gap:5px}
+.link-go svg{width:14px;height:14px;transition:transform .2s}
+.link-card:hover .link-go svg{transform:translateX(3px)}
+
+/* ============ 今日能量站 ============ */
+.widgets{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:stretch}
+.widget{
+  display:flex;flex-direction:column;gap:14px;padding:20px 20px 18px;background:var(--card);
+  border:1px solid var(--line);border-radius:10px;
+}
+.w-head{display:flex;align-items:center;gap:9px;font-size:.98rem;font-weight:700;color:var(--ink)}
+.w-icon{width:26px;height:26px;border-radius:7px;display:grid;place-items:center;color:#fff;flex:none}
+.w-icon svg{width:15px;height:15px}
+.w-icon.blue{background:var(--blue)}
+.w-icon.pink{background:var(--red)}
+.w-icon.yellow{background:var(--orange)}
+.w-tag{margin-left:auto;font-size:.7rem;letter-spacing:.18em;color:var(--ink-3);font-weight:500}
+.q-refresh{
+  width:26px;height:26px;flex:none;border:1px solid var(--line);border-radius:7px;
+  background:var(--card);color:var(--ink-2);cursor:pointer;display:grid;place-items:center;
+  transition:all .25s;
+}
+.q-refresh:hover{color:var(--blue);border-color:var(--blue);transform:rotate(180deg)}
+.q-refresh:active{transform:rotate(180deg) scale(.9)}
+.q-refresh svg{width:14px;height:14px}
+.q-refresh.spin{animation:qspin .6s cubic-bezier(.2,1.4,.4,1)}
+@keyframes qspin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.quote-note .pt{color:var(--blue);font-weight:500}
+
+/* 每日一言 */
+.quote-body{display:flex;flex-direction:column;justify-content:center;flex:1}
+.quote-jp{font-size:1.22rem;font-weight:700;line-height:1.75;color:var(--ink)}
+.quote-zh{color:var(--ink-3);font-size:.88rem;margin-top:10px}
+.quote-note{font-size:.74rem;color:var(--ink-3);margin-top:16px}
+
+/* 学习打卡 */
+.stamps{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.stamp{
+  aspect-ratio:1;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  color:var(--ink-3);border:1px dashed var(--line-strong);font-size:.88rem;font-weight:600;transition:all .25s;background:var(--card);
+}
+.stamp .num{font-size:.62rem;font-weight:500;opacity:.8;line-height:1}
+.stamp.today{border-color:var(--blue);color:var(--blue);background:var(--blue-bg);border-style:solid}
+.stamp.done{background:var(--blue);border-color:var(--blue);color:#fff;border-style:solid;box-shadow:0 2px 8px rgba(51,112,255,.35)}
+.stamp.pop{animation:pop .45s cubic-bezier(.2,1.6,.4,1)}
+@keyframes pop{0%{transform:scale(.55)}60%{transform:scale(1.16)}100%{transform:scale(1)}}
+.checkin-meta{display:flex;gap:16px;padding-top:12px;border-top:1px dashed var(--line)}
+.checkin-meta .m-item{display:flex;flex-direction:column;line-height:1.4}
+.checkin-meta b{font-size:1.3rem;color:var(--blue);font-weight:700;font-variant-numeric:tabular-nums}
+.checkin-meta span{font-size:.74rem;color:var(--ink-3)}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:9px 22px;
+  border:none;border-radius:8px;font-size:.92rem;font-weight:600;cursor:pointer;color:#fff;background:var(--blue);
+  transition:background .2s,transform .15s,box-shadow .2s;
+}
+.btn:hover{background:var(--blue-deep);box-shadow:0 4px 12px rgba(51,112,255,.3)}
+.btn:active{transform:translateY(1px)}
+.btn svg{width:15px;height:15px}
+.btn.done-state{background:#3A4150;box-shadow:none;cursor:default}
+.btn.done-state:hover{background:#3A4150}
+.btn.done-state:active{transform:none}
+
+/* 今日待办 */
+.todo-input{display:flex;gap:8px}
+.todo-input input{
+  flex:1;min-height:40px;padding:8px 13px;border:1px solid var(--line-strong);border-radius:8px;
+  background:var(--card);color:var(--ink);font-family:var(--sans);font-size:.9rem;transition:border-color .2s;
+}
+.todo-input input::placeholder{color:var(--ink-3)}
+.todo-input input:focus{outline:none;border-color:var(--blue)}
+.todo-add{
+  width:44px;min-height:44px;flex:none;border:none;border-radius:8px;cursor:pointer;color:#fff;
+  background:var(--blue);display:grid;place-items:center;transition:background .2s;
+}
+.todo-add:hover{background:var(--blue-deep)}
+.todo-add:active{transform:translateY(1px)}
+.todo-add svg{width:17px;height:17px}
+.todo-progress{display:flex;align-items:center;gap:10px}
+.todo-bar{flex:1;height:6px;background:#333A45;border-radius:99px;overflow:hidden}
+.todo-bar span{display:block;height:100%;background:var(--green);border-radius:99px;transition:width .35s}
+.todo-count{font-size:.78rem;color:var(--ink-3);white-space:nowrap}
+.todo-count b{color:var(--green);font-weight:700}
+.todo-list{list-style:none;margin-top:2px;flex:1}
+.todo-empty{color:var(--ink-3);font-size:.85rem;padding:14px 2px;text-align:center}
+.todo-item{display:flex;align-items:center;gap:10px;padding:8px 2px;border-bottom:1px dashed var(--line);animation:slideIn .28s ease}
+@keyframes slideIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.todo-check{
+  width:18px;height:18px;flex:none;border:1.5px solid var(--line-strong);border-radius:5px;background:var(--card);
+  cursor:pointer;display:grid;place-items:center;color:transparent;transition:all .2s;
+}
+.todo-check svg{width:11px;height:11px}
+.todo-item.done .todo-check{background:var(--green);border-color:var(--green);color:#fff}
+.todo-item.done .todo-text{color:var(--ink-3);text-decoration:line-through;text-decoration-color:rgba(134,144,156,.6)}
+.todo-text{flex:1;font-size:.9rem;word-break:break-all}
+.todo-del{
+  width:24px;height:24px;border:none;background:transparent;color:var(--ink-3);cursor:pointer;border-radius:6px;
+  display:grid;place-items:center;opacity:0;transition:all .2s;
+}
+.todo-del svg{width:14px;height:14px}
+.todo-item:hover .todo-del{opacity:1}
+.todo-del:hover{color:var(--red);background:rgba(245,63,63,.08)}
+.todo-done-all{margin-top:auto;padding-top:10px;font-size:.82rem;color:var(--green);text-align:center;display:none;font-weight:600}
+
+/* ============ 页脚 ============ */
+footer{margin-top:48px;padding:26px 0 36px;text-align:center;position:relative;z-index:1}
+.foot-line{font-size:1rem;font-weight:700;color:var(--ink)}
+.foot-line b{color:var(--blue);font-weight:900}
+footer .line2{color:var(--ink-3);font-size:.8rem;margin-top:4px}
+.foot-export{
+  margin-top:14px;min-height:40px;padding:8px 16px;border-radius:8px;border:1px solid var(--line-strong);background:var(--card);
+  color:var(--ink-2);font-size:.8rem;cursor:pointer;transition:all .2s;font-family:var(--sans);
+}
+.foot-export:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ============ Toast ============ */
+#toast{
+  position:fixed;left:50%;bottom:30px;transform:translateX(-50%) translateY(20px);z-index:99;
+  background:#2F3640;color:#EDEFF2;padding:11px 24px;border-radius:8px;font-size:.86rem;font-weight:500;
+  border:1px solid var(--line);
+  opacity:0;pointer-events:none;transition:all .3s;box-shadow:0 8px 24px rgba(0,0,0,.5);
+}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ============ 响应式 ============ */
+@media(max-width:960px){
+  .mission{grid-template-columns:1fr}
+  .widgets{grid-template-columns:1fr 1fr}
+  .widgets .widget:last-child{grid-column:1/-1}
+}
+@media(max-width:820px){
+  .speed{grid-template-columns:1fr}
+  .top-meta{margin-left:0;width:100%}
+}
+@media(max-width:640px){
+  .widgets{grid-template-columns:1fr}
+  .widgets .widget:last-child{grid-column:auto}
+  .todo-input input{font-size:16px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== 顶栏 ===== -->
+<header class="topbar wrap">
+  <div class="logo"><span class="logo-mark">施</span><span>施思のホーム</span></div>
+  <div class="top-meta">
+    <span class="chip" id="weatherChip" style="display:none">
+      <svg id="weatherIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.5M12 19v2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M2.5 12H5M19 12h2.5M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></svg>
+      <span id="weatherTxt">名古屋 --°</span>
+    </span>
+    <span class="chip"><span id="dateCn">—</span></span>
+    <span class="chip"><span class="num" id="clock">--:--:--</span></span>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ===== 主功能区：今日任务 ===== -->
+  <section class="hero" id="mission">
+    <p class="hero-kicker">TODAY · 今日のミッション</p>
+    <h1 class="hero-title" id="greetJp">こんばんは、施思</h1>
+    <p class="hero-sub" id="greetZh">晚上好，今天也辛苦了。</p>
+
+    <div class="mission">
+      <a class="m-btn" href="https://www.bilibili.com/video/BV16P4y1H7AX/" target="_blank" rel="noopener">
+        <span class="mi blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l6 3.5-6 3.5z" fill="currentColor" stroke="none"/></svg></span>
+        <span>看视频<small>盘词洞 · N5–N1 词汇</small></span>
+      </a>
+      <a class="m-btn" id="openNotes" href="openindex:" title="一键打开 Excel（本地方式，免弹窗）">
+        <span class="mi orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 0 4 4.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/><path d="M9 7h7M9 11h5"/></svg></span>
+        <span>记笔记<small>一键打开 · 文法词汇索引</small></span>
+      </a>
+      <a class="m-btn" href="https://shisi14-0716.github.io/qwerty-learner/gallery" target="_blank" rel="noopener">
+        <span class="mi green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.5 15a9 9 0 1 0 2-9L1 10"/></svg></span>
+        <span>复习巩固<small>温故知新 · 睡前过一遍</small></span>
+      </a>
+    </div>
+
+    <div class="stat-row">
+      <a class="stat-chip" href="#checkin">
+        <svg class="s-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        本周打卡 <b id="heroWeek">0</b><span class="u">/7</span>
+      </a>
+      <a class="stat-chip" href="#checkin">
+        <svg class="s-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4.5 13.5H11L9.5 22 19 9.5h-6.5z"/></svg>
+        连续学习 <b id="heroStreak">0</b><span class="u">天</span>
+      </a>
+      <a class="stat-chip" href="#todo">
+        <svg class="s-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        今日待办 <b id="heroTodo">0</b><span class="u">项</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== 快捷入口 ===== -->
+  <section class="sec" id="links">
+    <div class="sec-head">
+      <span class="sec-title">生活功能</span>
+      <span class="sec-count">2 个常用</span>
+    </div>
+    <div class="speed">
+      <a class="link-card" href="https://feishu.doubao.com/sheets/R9fJsTh4NhLsUStfcRvcmpR5nkg" target="_blank" rel="noopener">
+        <span class="icon-tile tile-orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></span>
+        <h3>财务控制台</h3>
+        <span class="link-go">打开控制台 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="link-card" href="https://4m2etm137ge3x.aiforce.cloud/app/app_17e89gwjc5c" target="_blank" rel="noopener">
+        <span class="icon-tile tile-purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M4 13h16"/><path d="M12 10v3"/></svg></span>
+        <h3>行李清单</h3>
+        <span class="link-go">打开清单 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== 今日能量站 ===== -->
+  <section class="sec" id="energy">
+    <div class="sec-head">
+      <span class="sec-title">今日能量站</span>
+      <span class="sec-count">一言 · 打卡 · 待办</span>
+    </div>
+    <div class="widgets">
+
+      <div class="widget">
+        <div class="w-head">
+          <span class="w-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l4-6 4 6"/><path d="M12 12l4-6 4 6"/><path d="M4 12h16v3H4z"/><path d="M5 19h14"/></svg></span>
+          每日一言
+          <span class="w-tag">ことわざ・名言</span>
+          <button class="q-refresh" id="quoteRefresh" aria-label="换一句" title="换一句">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
+          </button>
+        </div>
+        <div class="quote-body">
+          <p class="quote-jp" id="quoteJp">—</p>
+          <p class="quote-zh" id="quoteZh">—</p>
+          <p class="quote-note" id="quoteNote">今日の一言 · ことわざ</p>
+        </div>
+      </div>
+
+      <div class="widget" id="checkin">
+        <div class="w-head">
+          <span class="w-icon pink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4.5 13.5H11L9.5 22 19 9.5h-6.5z"/></svg></span>
+          学习打卡
+          <span class="w-tag">チェックイン</span>
+        </div>
+        <div class="stamps" id="stamps" aria-label="本周打卡"></div>
+        <div class="checkin-meta">
+          <div class="m-item"><b id="weekCount">0</b><span>本周打卡 / 7</span></div>
+          <div class="m-item"><b id="streakNum">0</b><span>连续学习天数</span></div>
+        </div>
+        <button class="btn" id="checkinBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          <span id="checkinTxt">今日打卡</span>
+        </button>
+      </div>
+
+      <div class="widget" id="todo">
+        <div class="w-head">
+          <span class="w-icon yellow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+          今日待办
+          <span class="w-tag">メモ</span>
+        </div>
+        <div class="todo-input">
+          <input id="todoInput" type="text" placeholder="写下今天要做的事…" maxlength="60" aria-label="新的待办事项">
+          <button class="todo-add" id="todoAdd" aria-label="添加待办">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+        </div>
+        <div class="todo-progress">
+          <div class="todo-bar"><span id="todoBar" style="width:0%"></span></div>
+          <span class="todo-count">已完成 <b id="todoDone">0</b>/<span id="todoTotal">0</span></span>
+        </div>
+        <ul class="todo-list" id="todoList"></ul>
+        <p class="todo-done-all" id="todoDoneAll">今天的待办全部完成，了不起！</p>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p class="foot-line">日日是<b>好日</b></p>
+  <p class="line2">每一天都是新的开始 · 2026 · 名古屋</p>
+  <button class="foot-export" id="exportBtn">导出数据备份</button>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var $ = function(s){ return document.querySelector(s); };
+
+  /* ---------- 本地存储 ---------- */
+  function load(key, def){
+    try{ var v = JSON.parse(localStorage.getItem(key)); return v === null ? def : v; }
+    catch(e){ return def; }
+  }
+  function save(key, val){ try{ localStorage.setItem(key, JSON.stringify(val)); }catch(e){} }
+
+  /* ---------- 日期工具（本地时区） ---------- */
+  function pad(n){ return (n < 10 ? "0" : "") + n; }
+  function keyOf(d){ return d.getFullYear() + "-" + pad(d.getMonth()+1) + "-" + pad(d.getDate()); }
+  function todayKey(){ return keyOf(new Date()); }
+  function addDays(d, n){ var r = new Date(d); r.setDate(r.getDate()+n); return r; }
+  function startOfWeek(d){ var w = (d.getDay()+6)%7; return addDays(d, -w); }
+  var WEEK_DOW = ["月","火","水","木","金","土","日"];
+
+  /* ---------- 时钟与问候 ---------- */
+  function greeting(){
+    var h = new Date().getHours();
+    if(h >= 5 && h < 11) return {jp:"おはよう、施思", zh:"早上好，新的一天从日语开始。"};
+    if(h >= 11 && h < 14) return {jp:"こんにちは、施思", zh:"中午好，吃饱了再继续学。"};
+    if(h >= 14 && h < 18) return {jp:"こんにちは、施思", zh:"下午好，保持专注，事半功倍。"};
+    if(h >= 18 && h < 23) return {jp:"こんばんは、施思", zh:"晚上好，今天也辛苦了。"};
+    return {jp:"おやすみ、施思", zh:"夜深了，早点休息，明天继续。"};
+  }
+  function tick(){
+    var now = new Date(), g = greeting();
+    $("#greetJp").textContent = g.jp;
+    $("#greetZh").textContent = g.zh;
+    $("#dateCn").textContent = (now.getMonth()+1) + "月" + now.getDate() + "日 星期" + "日一二三四五六".charAt(now.getDay());
+    $("#clock").textContent = pad(now.getHours()) + ":" + pad(now.getMinutes()) + ":" + pad(now.getSeconds());
+  }
+  tick(); setInterval(tick, 1000);
+
+  /* ---------- 名古屋天气（open-meteo，免费无 key） ---------- */
+  var W_CODES = {0:"晴",1:"多云",2:"多云",3:"阴",45:"雾",48:"雾",51:"毛毛雨",53:"毛毛雨",55:"毛毛雨",56:"冻雨",57:"冻雨",61:"小雨",63:"中雨",65:"大雨",66:"冻雨",67:"冻雨",71:"小雪",73:"中雪",75:"大雪",77:"雪粒",80:"阵雨",81:"阵雨",82:"强阵雨",85:"阵雪",86:"阵雪",95:"雷雨",96:"雷雨",99:"雷雨"};
+  var W_ICONS = {
+    sun:'<circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.5M12 19v2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M2.5 12H5M19 12h2.5M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/>',
+    cloud:'<path d="M17.5 18.5a4.5 4.5 0 0 0 .5-9A6 6 0 0 0 6.3 11a3.5 3.5 0 0 0 .7 7z"/>',
+    rain:'<path d="M17.5 17.5a4.5 4.5 0 0 0 .5-9A6 6 0 0 0 6.3 10a3.5 3.5 0 0 0 .7 7z"/><path d="M8.5 19l-1 2.5M12.5 19l-1 2.5M16.5 19l-1 2.5"/>',
+    snow:'<path d="M17.5 17.5a4.5 4.5 0 0 0 .5-9A6 6 0 0 0 6.3 10a3.5 3.5 0 0 0 .7 7z"/><path d="M9 20v2M9 19.5l1.2.7M7.8 21.2L9 20M9 22.5l-1.2.7M9 22.5l1.2.7"/>',
+    storm:'<path d="M17.5 17.5a4.5 4.5 0 0 0 .5-9A6 6 0 0 0 6.3 10a3.5 3.5 0 0 0 .7 7z"/><path d="M12 17l-2 4h3l-1.5 4"/>'
+  };
+  function weatherIcon(code){
+    if(code === 0) return "sun";
+    if(code >= 95) return "storm";
+    if((code >= 51 && code <= 67) || (code >= 80 && code <= 82)) return "rain";
+    if((code >= 71 && code <= 77) || (code >= 85 && code <= 86)) return "snow";
+    return "cloud";
+  }
+  function loadWeather(){
+    try{
+      fetch("https://api.open-meteo.com/v1/forecast?latitude=35.1815&longitude=136.9066&current_weather=true&timezone=Asia%2FTokyo")
+        .then(function(r){ return r.json(); })
+        .then(function(d){
+          var cw = d && d.current_weather; if(!cw) return;
+          var code = cw.weathercode;
+          $("#weatherTxt").textContent = "名古屋 " + Math.round(cw.temperature) + "° " + (W_CODES[code] || "多云");
+          $("#weatherIcon").innerHTML = W_ICONS[weatherIcon(code)] || W_ICONS.sun;
+          $("#weatherChip").style.display = "inline-flex";
+        })
+        .catch(function(){});
+    }catch(e){}
+  }
+  loadWeather();
+
+  /* ---------- 每日一言（精选谚语·名句，可刷新） ---------- */
+  var QUOTES = [
+    {jp:"七転び八起き", zh:"跌倒七次，就爬起来八次", src:"ことわざ", pt:"「七転び八起き」＝百折不挠"},
+    {jp:"継続は力なり", zh:"坚持就是力量", src:"ことわざ", pt:"「～なり」文语判断句（N1）"},
+    {jp:"塵も積もれば山となる", zh:"灰尘积聚也能成山，积少成多", src:"ことわざ", pt:"「も…ば…も」呼应"},
+    {jp:"石の上にも三年", zh:"冷石坐上三年也会变暖，功到自然成", src:"ことわざ"},
+    {jp:"急がば回れ", zh:"欲速则不达，绕远路反而最快", src:"ことわざ"},
+    {jp:"猿も木から落ちる", zh:"猴子也有失手时，智者千虑必有一失", src:"ことわざ"},
+    {jp:"花より団子", zh:"与其赏花不如吃团子，务实胜过虚荣", src:"ことわざ"},
+    {jp:"出る杭は打たれる", zh:"冒出的桩子先挨敲，枪打出头鸟", src:"ことわざ"},
+    {jp:"泣きっ面に蜂", zh:"哭脸上又蜇了蜂，祸不单行", src:"ことわざ"},
+    {jp:"棚からぼた餅", zh:"从架上掉下牡丹饼，天上掉馅饼", src:"ことわざ"},
+    {jp:"豚に真珠", zh:"把珍珠丢给猪，对牛弹琴", src:"ことわざ"},
+    {jp:"猫に小判", zh:"给猫赏金币，明珠暗投", src:"ことわざ"},
+    {jp:"犬も歩けば棒に当たる", zh:"狗到处走也会挨棍子，祸福相倚", src:"ことわざ"},
+    {jp:"骨折り損のくたびれ儲け", zh:"白费力气白受累，徒劳无功", src:"ことわざ"},
+    {jp:"二兎を追う者は一兎をも得ず", zh:"追两只兔子一只也得不到，贪多必失", src:"ことわざ"},
+    {jp:"百里を行く者は九十里を半ばとす", zh:"行百里者半九十", src:"ことわざ"},
+    {jp:"備えあれば憂いなし", zh:"有备则无忧", src:"ことわざ"},
+    {jp:"善は急げ", zh:"好事要趁快", src:"ことわざ"},
+    {jp:"聞くは一時の恥、聞かぬは一生の恥", zh:"问是一时的羞耻，不问是一辈子的羞耻", src:"ことわざ"},
+    {jp:"失敗は成功のもと", zh:"失败是成功之母", src:"ことわざ"},
+    {jp:"三人寄れば文殊の知恵", zh:"三人聚在一起，赛过文殊的智慧", src:"ことわざ"},
+    {jp:"過ぎたるは猶及ばざるが如し", zh:"过犹不及", src:"ことわざ", pt:"「～が如し」＝如同（N1文语）"},
+    {jp:"初心忘るべからず", zh:"勿忘初心", src:"ことわざ", pt:"「～べからず」＝禁止（N1）"},
+    {jp:"蓼食う虫も好き好き", zh:"萝卜青菜，各有所爱", src:"ことわざ"},
+    {jp:"井の中の蛙大海を知らず", zh:"井底之蛙不知大海", src:"ことわざ", pt:"「～を知らず」惯用（N1）"},
+    {jp:"人事を尽くして天命を待つ", zh:"尽人事，听天命", src:"ことわざ"},
+    {jp:"温故知新", zh:"温故而知新", src:"ことわざ"},
+    {jp:"以心伝心", zh:"以心传心，心领神会", src:"ことわざ"},
+    {jp:"一期一会", zh:"一生仅此一回，珍惜当下", src:"ことわざ"},
+    {jp:"千里の道も一歩から", zh:"千里之行，始于足下", src:"ことわざ"},
+    {jp:"明日は明日の風が吹く", zh:"明天自有明天的风，船到桥头自然直", src:"ことわざ"},
+    {jp:"案ずるより産むが易し", zh:"与其担忧不如去做，做了才发现没那么难", src:"ことわざ"},
+    {jp:"時は金なり", zh:"时间就是金钱", src:"ことわざ"},
+    {jp:"良薬は口に苦し", zh:"良药苦口", src:"ことわざ"},
+    {jp:"自業自得", zh:"自作自受", src:"ことわざ"},
+    {jp:"塞翁が馬", zh:"塞翁失马", src:"ことわざ"},
+    {jp:"努力は必ず報われる", zh:"努力必有回报", src:"ことわざ"},
+    {jp:"なるようになる", zh:"一切都会顺其自然", src:"ことわざ"},
+    {jp:"一石二鳥", zh:"一石二鸟", src:"ことわざ"},
+    {jp:"早起きは三文の徳", zh:"早起的鸟儿有虫吃，早起三分益", src:"ことわざ"},
+    {jp:"雨ニモマケズ、風ニモマケズ、雪ニモ夏ノ暑サニモマケヌ丈夫ナカラダヲモチ", zh:"不输给雨，不输给风，也不输给雪和夏天的酷暑，拥有强健的身体", src:"宮沢賢治『雨ニモマケズ』"},
+    {jp:"吾輩は猫である。名前はまだ無い。", zh:"我是猫，还没有名字。", src:"夏目漱石『吾輩は猫である』"},
+    {jp:"智に働けば角が立つ。情に棹させば流される。意地を通せば窮屈だ。とかくに人の世は住みにくい。", zh:"用智谋行事则棱角毕露；任凭感情则随波逐流；固执己见则处处碰壁。总之，人世间是难以居住的。", src:"夏目漱石『草枕』"},
+    {jp:"親譲りの無鉄砲で子供の時から損ばかりしている。", zh:"继承了父亲的天不怕地不怕，从小就老是吃亏。", src:"夏目漱石『坊つちやん』"},
+    {jp:"恥の多い生涯を送って来ました。", zh:"我度过了充满耻辱的一生。", src:"太宰治『人間失格』"},
+    {jp:"メロスは激怒した。必ず、かの邪智暴虐の王を除かなければならぬと決意した。", zh:"梅洛斯勃然大怒，决心一定要除掉那个邪恶暴虐的国王。", src:"太宰治『走れメロス』"},
+    {jp:"人生は一箱のマッチに似ている。真剣に扱うのは馬鹿らしいが、真剣に扱わなければ危険である。", zh:"人生就像一盒火柴：郑重其事地对待很愚蠢，不郑重其事地对待又很危险。", src:"芥川龍之介『侏儒の言葉』"},
+    {jp:"古池や蛙飛びこむ水の音", zh:"古池塘，青蛙跃入，水声清响", src:"松尾芭蕉（俳句）"},
+    {jp:"旅に病んで夢は枯野をかけめぐる", zh:"旅中卧病，梦在枯野上奔驰", src:"松尾芭蕉（临终俳句）"},
+    {jp:"柿食へば鐘が鳴るなり法隆寺", zh:"吃下柿子，法隆寺的钟声响起", src:"正岡子規（俳句）"},
+    {jp:"みんなちがって、みんないい", zh:"大家都不一样，大家都很好", src:"金子みすゞ『私と小鳥と鈴と』"},
+    {jp:"君たちはどう生きるか", zh:"你们将如何生活", src:"吉野源三郎『君たちはどう生きるか』"},
+    {jp:"人生・仕事の結果＝考え方×熱意×能力", zh:"人生与事业的结果 = 思维方式 × 热情 × 能力", src:"稲盛和夫"},
+    {jp:"努力した者が全て報われるとは限らない。しかし、成功した者は必ず努力している。", zh:"努力的人不一定都有回报，但成功的人一定都努力过。", src:"鈴木一朗（名言）"},
+    {jp:"はたらけどはたらけど猶わが生活楽にならざりぢっと手を見る", zh:"拼命地工作，拼命地工作，生活却依旧困苦，我呆呆地望着自己的手", src:"石川啄木『一握の砂』"},
+    {jp:"清水へ祇園をよぎる桜月夜こよひ逢ふ人みなうつくしき", zh:"穿过祇园往清水寺去，樱花开遍的月夜，今夜所遇之人个个都美丽", src:"与謝野晶子『みだれ髪』"},
+    {jp:"汚れつちまつた悲しみに今日も小雪の降りかかる", zh:"在这沾染了污秽的悲伤之上，今天也飘落着小雪", src:"中原中也『汚れつちまつた悲しみに…』"},
+    {jp:"芸術は爆発だ", zh:"艺术就是爆炸", src:"岡本太郎"},
+    {jp:"諦めたら、そこで試合終了ですよ。", zh:"一旦放弃，比赛就结束了。", src:"安西先生『SLAM DUNK』"},
+    {jp:"日日是好日", zh:"每一天，都是好日子", src:"仏教語"},
+    {jp:"できるかできないかではなく、やるかやらないか", zh:"问题不是能不能，而是做不做", src:"名言"}
+  ];
+  var Q_KEY = "home_quote_used";
+  function dayOfYear(){
+    var n = new Date(); return Math.floor((n - new Date(n.getFullYear(),0,0)) / 864e5);
+  }
+  function renderQuote(idx, used){
+    var q = QUOTES[idx];
+    $("#quoteJp").textContent = q.jp;
+    $("#quoteZh").textContent = "—— " + q.zh;
+    $("#quoteNote").innerHTML = q.src + (q.pt ? ' · <span class="pt">考点：' + q.pt + '</span>' : "");
+    save(Q_KEY, used);
+  }
+  function pickQuote(excludeUsed){
+    var used = excludeUsed.slice();
+    if(used.length >= QUOTES.length){ used = []; }
+    var pool = [];
+    for(var i = 0; i < QUOTES.length; i++){ if(used.indexOf(i) === -1) pool.push(i); }
+    if(!pool.length) pool = [dayOfYear() % QUOTES.length];
+    return { idx: pool[Math.floor(Math.random() * pool.length)], used: used };
+  }
+  (function(){
+    var used = load(Q_KEY, []);
+    var idx;
+    if(used.length === 0){
+      idx = dayOfYear() % QUOTES.length;      // 每日首次打开：当日推荐
+      used = [idx];
+    } else if(used.length < QUOTES.length){
+      var p = pickQuote(used);                  // 非首次：从没用过的里随机
+      idx = p.idx; used = p.used.concat([idx]);
+    } else {
+      idx = dayOfYear() % QUOTES.length; used = [idx];
+    }
+    renderQuote(idx, used);
+  })();
+  $("#quoteRefresh").addEventListener("click", function(){
+    var used = load(Q_KEY, []);
+    var p = pickQuote(used);
+    renderQuote(p.idx, p.used.concat([p.idx]));
+    var el = $("#quoteRefresh");
+    el.classList.add("spin");
+    setTimeout(function(){ el.classList.remove("spin"); }, 600);
+  });
+
+  /* ---------- 打卡与连续天数 ---------- */
+  var STAMP_KEY = "home_stamps";
+  function calcStreak(stamps){
+    var set = {}; stamps.forEach(function(k){ set[k] = true; });
+    var d = new Date(), c = 0;
+    if(!set[keyOf(d)]) d = addDays(d, -1);
+    while(set[keyOf(d)]){ c++; d = addDays(d, -1); }
+    return c;
+  }
+  function renderStamps(){
+    var stamps = load(STAMP_KEY, []);
+    var set = {}; stamps.forEach(function(k){ set[k] = true; });
+    var today = new Date(), tk = todayKey();
+    var monday = startOfWeek(today);
+    var box = $("#stamps"); box.innerHTML = "";
+    var weekCount = 0;
+    for(var i = 0; i < 7; i++){
+      var d = addDays(monday, i), k = keyOf(d);
+      var el = document.createElement("span");
+      el.className = "stamp" + (set[k] ? " done" : "") + (k === tk ? " today" : "");
+      el.innerHTML = WEEK_DOW[i] + '<span class="num">' + d.getDate() + '</span>';
+      if(set[k]) weekCount++;
+      box.appendChild(el);
+    }
+    var streak = calcStreak(stamps);
+    $("#weekCount").textContent = weekCount;
+    $("#heroWeek").textContent = weekCount;
+    $("#streakNum").textContent = streak;
+    $("#heroStreak").textContent = streak;
+    var btn = $("#checkinBtn");
+    if(set[tk]){
+      btn.classList.add("done-state");
+      $("#checkinTxt").textContent = "今日已打卡";
+      btn.disabled = true;
+    } else {
+      btn.classList.remove("done-state");
+      $("#checkinTxt").textContent = "今日打卡";
+      btn.disabled = false;
+    }
+  }
+  $("#checkinBtn").addEventListener("click", function(){
+    var stamps = load(STAMP_KEY, []);
+    var tk = todayKey();
+    if(stamps.indexOf(tk) !== -1){ toast("今天已经打过卡啦"); return; }
+    stamps.push(tk); save(STAMP_KEY, stamps);
+    renderStamps();
+    var today = new Date(), monday = startOfWeek(today), idx = (today.getDay()+6)%7;
+    var el = $("#stamps").children[idx];
+    if(el){ el.classList.add("pop"); setTimeout(function(){ el.classList.remove("pop"); }, 500); }
+    toast("打卡成功 · " + WEEK_DOW[idx] + "曜日、一歩前進！");
+    var wk = load(STAMP_KEY, []).filter(function(k){ return k >= keyOf(monday) && k <= keyOf(addDays(monday,6)); }).length;
+    if(wk >= 7){ setTimeout(function(){ toast("本周全勤！継続は力なり"); }, 1600); }
+  });
+
+  /* ---------- 今日待办（按天存储） ---------- */
+  var TODO_KEY = "home_todo_" + todayKey();
+  function renderTodo(){
+    var items = load(TODO_KEY, []);
+    var list = $("#todoList"); list.innerHTML = "";
+    var done = 0;
+    if(!items.length){
+      var empty = document.createElement("li");
+      empty.className = "todo-empty";
+      empty.textContent = "还没有待办，写下今天的第一件事吧";
+      list.appendChild(empty);
+    }
+    items.forEach(function(item){
+      if(item.done) done++;
+      var li = document.createElement("li");
+      li.className = "todo-item" + (item.done ? " done" : "");
+      var cb = document.createElement("button");
+      cb.className = "todo-check";
+      cb.setAttribute("aria-label", item.done ? "标记为未完成" : "标记为完成");
+      cb.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>';
+      cb.addEventListener("click", function(){
+        items.forEach(function(x){ if(x.id === item.id) x.done = !x.done; });
+        save(TODO_KEY, items); renderTodo();
+      });
+      var txt = document.createElement("span");
+      txt.className = "todo-text"; txt.textContent = item.text;
+      var del = document.createElement("button");
+      del.className = "todo-del";
+      del.setAttribute("aria-label", "删除");
+      del.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>';
+      del.addEventListener("click", function(){
+        items = items.filter(function(x){ return x.id !== item.id; });
+        save(TODO_KEY, items); renderTodo();
+      });
+      li.appendChild(cb); li.appendChild(txt); li.appendChild(del);
+      list.appendChild(li);
+    });
+    $("#todoDone").textContent = done;
+    $("#todoTotal").textContent = items.length;
+    $("#todoBar").style.width = items.length ? (done/items.length*100) + "%" : "0%";
+    $("#todoDoneAll").style.display = (items.length && done === items.length) ? "block" : "none";
+    $("#heroTodo").textContent = items.length - done;
+  }
+  function addTodo(){
+    var input = $("#todoInput"), v = input.value.trim();
+    if(!v){ toast("先写点什么吧"); return; }
+    var items = load(TODO_KEY, []);
+    items.unshift({ id: Date.now() + Math.random(), text: v, done: false });
+    save(TODO_KEY, items);
+    input.value = ""; renderTodo();
+    toast("已记下 · 言出必行");
+  }
+  $("#todoAdd").addEventListener("click", addTodo);
+  $("#todoInput").addEventListener("keydown", function(e){ if(e.key === "Enter") addTodo(); });
+
+  /* ---------- 导出数据备份 ---------- */
+  $("#exportBtn").addEventListener("click", function(){
+    try{
+      var data = { exportedAt: new Date().toISOString(), stamps: load(STAMP_KEY, []), todos: {} };
+      for(var i = 0; i < localStorage.length; i++){
+        var k = localStorage.key(i);
+        if(k && k.indexOf("home_todo_") === 0){ data.todos[k] = load(k, []); }
+      }
+      var blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+      var a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "施思主页备份-" + todayKey() + ".json";
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1000);
+      toast("已导出备份文件");
+    }catch(e){ toast("导出失败，请重试"); }
+  });
+
+  /* ---------- Toast ---------- */
+  var toastTimer = null;
+  function toast(msg){
+    var el = $("#toast");
+    el.textContent = msg;
+    el.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ el.classList.remove("show"); }, 2400);
+  }
+
+  renderStamps(); renderTodo();
+})();
+</script>
+<div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
