@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>施思のホーム ｜ 日日是好日</title>
-<meta name="description" content="施思的个人主页：今日学习任务、财务控制台、日语课程、单词画廊、每日一言与打卡。">
+<meta name="description" content="施思的个人主页：今日学习任务、生活功能、每日一言与待办。">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%233370FF'/%3E%3Ctext x='32' y='45' font-size='36' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700'%3E施%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap">
 <style>
@@ -121,7 +121,7 @@ button{font-family:var(--sans)}
 .link-card:hover .link-go svg{transform:translateX(3px)}
 
 /* ============ 今日能量站 ============ */
-.widgets{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:stretch}
+.widgets{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;align-items:stretch}
 .widget{
   display:flex;flex-direction:column;gap:14px;padding:20px 20px 18px;background:var(--card);
   border:1px solid var(--line);border-radius:10px;
@@ -152,33 +152,6 @@ button{font-family:var(--sans)}
 .quote-jp rt{font-size:.5em;font-weight:500;color:var(--ink-2);letter-spacing:0}
 .quote-zh{color:var(--ink-3);font-size:.88rem;margin-top:10px}
 .quote-note{font-size:.74rem;color:var(--ink-3);margin-top:16px}
-
-/* 学习打卡 */
-.stamps{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
-.stamp{
-  aspect-ratio:1;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  color:var(--ink-3);border:1px dashed var(--line-strong);font-size:.88rem;font-weight:600;transition:all .25s;background:var(--card);
-}
-.stamp .num{font-size:.62rem;font-weight:500;opacity:.8;line-height:1}
-.stamp.today{border-color:var(--blue);color:var(--blue);background:var(--blue-bg);border-style:solid}
-.stamp.done{background:var(--blue);border-color:var(--blue);color:#fff;border-style:solid;box-shadow:0 2px 8px rgba(51,112,255,.35)}
-.stamp.pop{animation:pop .45s cubic-bezier(.2,1.6,.4,1)}
-@keyframes pop{0%{transform:scale(.55)}60%{transform:scale(1.16)}100%{transform:scale(1)}}
-.checkin-meta{display:flex;gap:16px;padding-top:12px;border-top:1px dashed var(--line)}
-.checkin-meta .m-item{display:flex;flex-direction:column;line-height:1.4}
-.checkin-meta b{font-size:1.3rem;color:var(--blue);font-weight:700;font-variant-numeric:tabular-nums}
-.checkin-meta span{font-size:.74rem;color:var(--ink-3)}
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:9px 22px;
-  border:none;border-radius:8px;font-size:.92rem;font-weight:600;cursor:pointer;color:#fff;background:var(--blue);
-  transition:background .2s,transform .15s,box-shadow .2s;
-}
-.btn:hover{background:var(--blue-deep);box-shadow:0 4px 12px rgba(51,112,255,.3)}
-.btn:active{transform:translateY(1px)}
-.btn svg{width:15px;height:15px}
-.btn.done-state{background:#3A4150;box-shadow:none;cursor:default}
-.btn.done-state:hover{background:#3A4150}
-.btn.done-state:active{transform:none}
 
 /* 今日待办 */
 .todo-input{display:flex;gap:8px}
@@ -245,7 +218,6 @@ footer .line2{color:var(--ink-3);font-size:.8rem;margin-top:4px}
 @media(max-width:960px){
   .mission{grid-template-columns:1fr}
   .widgets{grid-template-columns:1fr 1fr}
-  .widgets .widget:last-child{grid-column:1/-1}
 }
 @media(max-width:820px){
   .speed{grid-template-columns:1fr}
@@ -253,7 +225,6 @@ footer .line2{color:var(--ink-3);font-size:.8rem;margin-top:4px}
 }
 @media(max-width:640px){
   .widgets{grid-template-columns:1fr}
-  .widgets .widget:last-child{grid-column:auto}
   .todo-input input{font-size:16px}
 }
 @media(prefers-reduced-motion:reduce){
@@ -301,14 +272,6 @@ footer .line2{color:var(--ink-3);font-size:.8rem;margin-top:4px}
     </div>
 
     <div class="stat-row">
-      <a class="stat-chip" href="#checkin">
-        <svg class="s-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-        本周打卡 <b id="heroWeek">0</b><span class="u">/7</span>
-      </a>
-      <a class="stat-chip" href="#checkin">
-        <svg class="s-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4.5 13.5H11L9.5 22 19 9.5h-6.5z"/></svg>
-        连续学习 <b id="heroStreak">0</b><span class="u">天</span>
-      </a>
       <a class="stat-chip" href="#todo">
         <svg class="s-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
         今日待办 <b id="heroTodo">0</b><span class="u">项</span>
@@ -340,7 +303,7 @@ footer .line2{color:var(--ink-3);font-size:.8rem;margin-top:4px}
   <section class="sec" id="energy">
     <div class="sec-head">
       <span class="sec-title">今日能量站</span>
-      <span class="sec-count">一言 · 打卡 · 待办</span>
+      <span class="sec-count">一言 · 待办</span>
     </div>
     <div class="widgets">
 
@@ -358,23 +321,6 @@ footer .line2{color:var(--ink-3);font-size:.8rem;margin-top:4px}
           <p class="quote-zh" id="quoteZh">—</p>
           <p class="quote-note" id="quoteNote">今日の一言 · ことわざ</p>
         </div>
-      </div>
-
-      <div class="widget" id="checkin">
-        <div class="w-head">
-          <span class="w-icon pink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4.5 13.5H11L9.5 22 19 9.5h-6.5z"/></svg></span>
-          学习打卡
-          <span class="w-tag">チェックイン</span>
-        </div>
-        <div class="stamps" id="stamps" aria-label="本周打卡"></div>
-        <div class="checkin-meta">
-          <div class="m-item"><b id="weekCount">0</b><span>本周打卡 / 7</span></div>
-          <div class="m-item"><b id="streakNum">0</b><span>连续学习天数</span></div>
-        </div>
-        <button class="btn" id="checkinBtn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-          <span id="checkinTxt">今日打卡</span>
-        </button>
       </div>
 
       <div class="widget" id="todo">
@@ -424,9 +370,6 @@ footer .line2{color:var(--ink-3);font-size:.8rem;margin-top:4px}
   function pad(n){ return (n < 10 ? "0" : "") + n; }
   function keyOf(d){ return d.getFullYear() + "-" + pad(d.getMonth()+1) + "-" + pad(d.getDate()); }
   function todayKey(){ return keyOf(new Date()); }
-  function addDays(d, n){ var r = new Date(d); r.setDate(r.getDate()+n); return r; }
-  function startOfWeek(d){ var w = (d.getDay()+6)%7; return addDays(d, -w); }
-  var WEEK_DOW = ["月","火","水","木","金","土","日"];
 
   /* ---------- 时钟与问候 ---------- */
   function greeting(){
@@ -584,60 +527,6 @@ footer .line2{color:var(--ink-3);font-size:.8rem;margin-top:4px}
     setTimeout(function(){ el.classList.remove("spin"); }, 600);
   });
 
-  /* ---------- 打卡与连续天数 ---------- */
-  var STAMP_KEY = "home_stamps";
-  function calcStreak(stamps){
-    var set = {}; stamps.forEach(function(k){ set[k] = true; });
-    var d = new Date(), c = 0;
-    if(!set[keyOf(d)]) d = addDays(d, -1);
-    while(set[keyOf(d)]){ c++; d = addDays(d, -1); }
-    return c;
-  }
-  function renderStamps(){
-    var stamps = load(STAMP_KEY, []);
-    var set = {}; stamps.forEach(function(k){ set[k] = true; });
-    var today = new Date(), tk = todayKey();
-    var monday = startOfWeek(today);
-    var box = $("#stamps"); box.innerHTML = "";
-    var weekCount = 0;
-    for(var i = 0; i < 7; i++){
-      var d = addDays(monday, i), k = keyOf(d);
-      var el = document.createElement("span");
-      el.className = "stamp" + (set[k] ? " done" : "") + (k === tk ? " today" : "");
-      el.innerHTML = WEEK_DOW[i] + '<span class="num">' + d.getDate() + '</span>';
-      if(set[k]) weekCount++;
-      box.appendChild(el);
-    }
-    var streak = calcStreak(stamps);
-    $("#weekCount").textContent = weekCount;
-    $("#heroWeek").textContent = weekCount;
-    $("#streakNum").textContent = streak;
-    $("#heroStreak").textContent = streak;
-    var btn = $("#checkinBtn");
-    if(set[tk]){
-      btn.classList.add("done-state");
-      $("#checkinTxt").textContent = "今日已打卡";
-      btn.disabled = true;
-    } else {
-      btn.classList.remove("done-state");
-      $("#checkinTxt").textContent = "今日打卡";
-      btn.disabled = false;
-    }
-  }
-  $("#checkinBtn").addEventListener("click", function(){
-    var stamps = load(STAMP_KEY, []);
-    var tk = todayKey();
-    if(stamps.indexOf(tk) !== -1){ toast("今天已经打过卡啦"); return; }
-    stamps.push(tk); save(STAMP_KEY, stamps);
-    renderStamps();
-    var today = new Date(), monday = startOfWeek(today), idx = (today.getDay()+6)%7;
-    var el = $("#stamps").children[idx];
-    if(el){ el.classList.add("pop"); setTimeout(function(){ el.classList.remove("pop"); }, 500); }
-    toast("打卡成功 · " + WEEK_DOW[idx] + "曜日、一歩前進！");
-    var wk = load(STAMP_KEY, []).filter(function(k){ return k >= keyOf(monday) && k <= keyOf(addDays(monday,6)); }).length;
-    if(wk >= 7){ setTimeout(function(){ toast("本周全勤！継続は力なり"); }, 1600); }
-  });
-
   /* ---------- 今日待办（按天存储） ---------- */
   var TODO_KEY = "home_todo_" + todayKey();
   function renderTodo(){
@@ -696,7 +585,7 @@ footer .line2{color:var(--ink-3);font-size:.8rem;margin-top:4px}
   /* ---------- 导出数据备份 ---------- */
   $("#exportBtn").addEventListener("click", function(){
     try{
-      var data = { exportedAt: new Date().toISOString(), stamps: load(STAMP_KEY, []), todos: {} };
+      var data = { exportedAt: new Date().toISOString(), todos: {} };
       for(var i = 0; i < localStorage.length; i++){
         var k = localStorage.key(i);
         if(k && k.indexOf("home_todo_") === 0){ data.todos[k] = load(k, []); }
@@ -721,7 +610,7 @@ footer .line2{color:var(--ink-3);font-size:.8rem;margin-top:4px}
     toastTimer = setTimeout(function(){ el.classList.remove("show"); }, 2400);
   }
 
-  renderStamps(); renderTodo();
+  renderTodo();
 })();
 </script>
 <div id="toast" role="status" aria-live="polite"></div>
