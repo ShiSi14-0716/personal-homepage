@@ -101,24 +101,21 @@ button{font-family:var(--sans)}
 .sec-count{margin-left:auto;font-size:.8rem;color:var(--ink-3)}
 
 /* ============ 快捷入口 ============ */
-.speed{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.link-card{
-  display:flex;flex-direction:column;gap:8px;padding:20px 20px 16px;background:var(--card);
-  border:1px solid var(--line);border-radius:10px;text-decoration:none;color:inherit;
-  transition:border-color .2s,box-shadow .2s,transform .15s;position:relative;
+.speed{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.app-item{
+  display:flex;flex-direction:column;align-items:center;gap:10px;padding:22px 12px 16px;
+  background:var(--card);border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;
+  transition:border-color .2s,box-shadow .2s,transform .15s;
 }
-.link-card:hover{border-color:var(--line-strong);box-shadow:0 8px 22px rgba(0,0,0,.45);transform:translateY(-2px)}
-.icon-tile{width:38px;height:38px;border-radius:8px;display:grid;place-items:center;color:#fff;margin-bottom:6px}
-.icon-tile svg{width:20px;height:20px}
+.app-item:hover{border-color:var(--line-strong);box-shadow:0 8px 22px rgba(0,0,0,.45);transform:translateY(-2px)}
+.icon-tile{display:grid;place-items:center;color:#fff}
 .tile-blue{background:var(--blue)}
 .tile-orange{background:var(--orange)}
 .tile-green{background:var(--green)}
 .tile-purple{background:var(--purple)}
-.link-card h3{font-size:1rem;font-weight:700;color:var(--ink)}
-.link-card p{color:var(--ink-3);font-size:.84rem;line-height:1.6;flex:1}
-.link-go{margin-top:8px;font-size:.84rem;font-weight:600;color:var(--blue);display:inline-flex;align-items:center;gap:5px}
-.link-go svg{width:14px;height:14px;transition:transform .2s}
-.link-card:hover .link-go svg{transform:translateX(3px)}
+.app-item .icon-tile{width:46px;height:46px;border-radius:10px;margin-bottom:0}
+.app-item .icon-tile svg{width:22px;height:22px}
+.app-item .txt{font-size:.9rem;font-weight:600;color:var(--ink);white-space:nowrap}
 
 /* ============ 今日能量站 ============ */
 .widgets{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;align-items:stretch}
@@ -220,7 +217,11 @@ footer .line2{color:var(--ink-3);font-size:.8rem;margin-top:4px}
   .widgets{grid-template-columns:1fr 1fr}
 }
 @media(max-width:820px){
-  .speed{grid-template-columns:1fr}
+  .speed{grid-template-columns:repeat(4,1fr);gap:10px}
+  .app-item{padding:16px 6px 12px}
+  .app-item .icon-tile{width:40px;height:40px}
+  .app-item .icon-tile svg{width:19px;height:19px}
+  .app-item .txt{font-size:.78rem}
   .top-meta{margin-left:0;width:100%}
 }
 @media(max-width:640px){
@@ -283,23 +284,24 @@ footer .line2{color:var(--ink-3);font-size:.8rem;margin-top:4px}
   <section class="sec" id="links">
     <div class="sec-head">
       <span class="sec-title">生活功能</span>
-      <span class="sec-count">3 个常用</span>
+      <span class="sec-count">4 个常用</span>
     </div>
     <div class="speed">
-      <a class="link-card" href="https://feishu.doubao.com/sheets/R9fJsTh4NhLsUStfcRvcmpR5nkg" target="_blank" rel="noopener">
+      <a class="app-item" href="https://feishu.doubao.com/sheets/R9fJsTh4NhLsUStfcRvcmpR5nkg" target="_blank" rel="noopener" aria-label="财务控制台">
         <span class="icon-tile tile-orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></span>
-        <h3>财务控制台</h3>
-        <span class="link-go">打开控制台 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        <span class="txt">财务</span>
       </a>
-      <a class="link-card" href="https://shisi14-0716.github.io/luggage-checklist/" target="_blank" rel="noopener">
+      <a class="app-item" href="https://shisi14-0716.github.io/luggage-checklist/" target="_blank" rel="noopener" aria-label="行李清单">
         <span class="icon-tile tile-purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M4 13h16"/><path d="M12 10v3"/></svg></span>
-        <h3>行李清单</h3>
-        <span class="link-go">打开清单 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        <span class="txt">行李</span>
       </a>
-      <a class="link-card" href="https://4m2etm137ge3x.aiforce.cloud/app/app_17e9rbgv28h" target="_blank" rel="noopener">
+      <a class="app-item" href="https://4m2etm137ge3x.aiforce.cloud/app/app_17e9rbgv28h" target="_blank" rel="noopener" aria-label="日本入境指南">
         <span class="icon-tile tile-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></span>
-        <h3>日本入境指南</h3>
-        <span class="link-go">打开指南 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        <span class="txt">入境</span>
+      </a>
+      <a class="app-item" href="https://4m2etm137ge3x.aiforce.cloud/app/app_17ea2tcq4k4" target="_blank" rel="noopener" aria-label="名古屋物价目安">
+        <span class="icon-tile tile-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span>
+        <span class="txt">物价</span>
       </a>
     </div>
   </section>
